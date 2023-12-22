@@ -16,3 +16,21 @@ class Perceptron:
         x_sum = np.dot(np.append(x,self.bias),self.weights)
         return self.sigmoid(x_sum)
         
+    def set_weights(self, w_init):
+        "w_init is a set of floats"
+        self.weights = np.array(w_init)
+
+    def sigmoid(self, x):
+        #return the output of the sigmoid function applied to the weighted sum of the inputs
+        return 1 / (1+np.exp(-x))
+    
+
+neuron = Perceptron(inputs=2)
+neuron.set_weights([20,20,-10])
+
+print("Gate:")
+print("0 0 = {0:10f}".format(neuron.run([0,0])))
+print("0 0 = {0:10f}".format(neuron.run([0,1])))
+print("0 0 = {0:10f}".format(neuron.run([1,0])))
+print("0 0 = {0:10f}".format(neuron.run([1,1])))
+print(neuron.run([1,1]))
